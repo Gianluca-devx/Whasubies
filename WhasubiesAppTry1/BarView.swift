@@ -14,13 +14,16 @@ struct BarView: View {
                 CalendarTry1()
             }
             Tab("Swipe", systemImage: "square.stack.3d.down.right") {
-                ContentView()
+                SwipeView()
             }
             Tab("Learn", systemImage: "book") {
-                ContentView()
+                LearnView()
             }
             Tab("Diary", systemImage: "calendar") {
-                ContentView()
+                DiaryView()
+            }
+            Tab("Setting", systemImage: "gear") {
+                SettingsView()
             }
         }
     }
