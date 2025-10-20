@@ -8,19 +8,25 @@
 import SwiftUI
 
 struct BarView: View {
+    
+    @State private var showAnimation: Bool = false
+    
     var body: some View {
         TabView() {
             Tab("Home", systemImage: "house") {
-                CalendarTry1()
+                CalendarTryView()
             }
-            Tab("Swipe", systemImage: "square.stack.3d.down.right") {
-                ContentView()
+            Tab("Swipe", systemImage: "square.stack.3d.down.right",) {
+                SwipeView()
             }
             Tab("Learn", systemImage: "book") {
-                ContentView()
+                LearnView()
             }
             Tab("Diary", systemImage: "calendar") {
                 ContentView()
+            }
+                Tab("Settings", systemImage: "gear") {
+                    ContentView()
             }
         }
     }
@@ -30,4 +36,4 @@ struct BarView: View {
     BarView()
 }
 
-
+//.symbolEffect(.rotate.wholeSymbol, options: .nonRepeating)

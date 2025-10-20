@@ -18,7 +18,7 @@ struct ContentView: View {
         NavigationStack {
             VStack {
                 NavigationLink ("Navigation Button") {
-                    DestinationView()
+                    ContentView()
                 }
                 
                 Button ("Open Modal") {
