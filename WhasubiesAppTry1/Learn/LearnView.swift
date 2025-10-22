@@ -15,18 +15,21 @@ struct LearnView: View {
             VStack {
                 List{
                     ForEach(ListModel.articles) { article in
-                        
-                        NavigationLink(destination: ListDetailView(article : article)) {
-                            HStack {
-                                Image(systemName: "circle.fill")
-                                Text(article.title)
-                                    .font(.headline)
-                            }.navigationTitle("Learning")
-                                .padding()
+                        Section(){
+                               
+                                NavigationLink(destination: ListDetailView(article : article)) {
+                                    HStack {
+                                        Image(systemName: "circle.fill")
+                                        Text(article.title)
+                                            .font(.headline)
+                                    }.navigationTitle("Learning")
+                                        .padding()
+                                }
+                            }
                         }
                     }
                 }
-            }
+            
         }
     }
 }
