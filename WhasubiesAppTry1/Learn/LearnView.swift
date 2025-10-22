@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct LearnView: View {
+    var ListModel = ListViewModel()
+    
     var body: some View {
-        Text("Hello, Learn!")
-        Button("Click") {
-            
+        NavigationStack {
+            VStack {
+                List{
+                    ForEach(ListModel.articles) { article in
+                        
+                        NavigationLink(destination: ListDetailView(article : article)) {
+                            HStack {
+                                Image(systemName: "circle.fill")
+                                Text(article.title)
+                                    .font(.headline)
+                            }.navigationTitle("Learning")
+                                .padding()
+                        }
+                    }
+                }
+            }
         }
     }
 }
-
 #Preview {
     LearnView()
+    
 }

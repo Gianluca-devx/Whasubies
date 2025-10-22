@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct ListDetailView: View {
+    var article : ListModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        Text(article.title)
+            .font(.title)
+            .bold()
+        
     }
 }
-
 #Preview {
-    ListDetailView()
+    ListDetailView(article:    ListModel(title: "eat shit", color: .red))
 }
