@@ -14,6 +14,11 @@ struct CalendarTry1: View {
     @State private var isSheetPresented = false
     
     var body: some View {
+        
+        ZStack {
+            backgroundGradient
+                .ignoresSafeArea(edges: .all)
+            
             DatePicker(
                 "Start Date",
                 selection: $date,
@@ -27,18 +32,18 @@ struct CalendarTry1: View {
                 guard oldDay != newDay else { return }
                 isSheetPresented = true
             }
-//            .onTapGesture {
-//                isSheetPresented = true
-//            }
+            //            .onTapGesture {
+            //                isSheetPresented = true
+            //            }
             .sheet(isPresented: $isSheetPresented) {
                 VStack{
-                   HStack{
-                       Button {
+                    HStack{
+                        Button {
                             isSheetPresented = false
-                       } label: {
-                       Image(systemName: "xmark")
-                       }
-                       .buttonBorderShape(.circle)
+                        } label: {
+                            Image(systemName: "xmark")
+                        }
+                        .buttonBorderShape(.circle)
                         .buttonStyle(.glass)
                         .controlSize(.large)
                         
@@ -49,11 +54,14 @@ struct CalendarTry1: View {
                     
                     Spacer()
                     
-                    .presentationDetents([.medium, .large])
+                        .presentationDetents([.medium, .large])
                 }
                 .padding()
             }.navigationTitle("ale")
-            .datePickerStyle(.graphical)
+                .datePickerStyle(.graphical)
+            
+            
+        }
             //.onChange(of: date) { _, _ in
                 // Present the sheet whenever a date is selected/changed
                 //isSheetPresented = true

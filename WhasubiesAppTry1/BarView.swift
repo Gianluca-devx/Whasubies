@@ -7,28 +7,33 @@
 
 import SwiftUI
 
+
 struct BarView: View {
     var body: some View {
-        TabView() {
-            Tab("Home", systemImage: "house") {
-                CalendarTry1()
-            }
-            Tab("Swipe", systemImage: "square.stack.3d.down.right") {
-                SwipeView()
-            }
-            Tab("Learn", systemImage: "book") {
-                LearnView()
-            }
-            Tab("Diary", systemImage: "calendar") {
-                DiaryView()
-            }
-            Tab("Setting", systemImage: "gear") {
-                SettingsView()
+        ZStack{
+            backgroundGradient
+                .ignoresSafeArea()
+            
+            TabView() {
+                Tab("Home", systemImage: "house") {
+                    CalendarTry1()
+                }
+                Tab("Swipe", systemImage: "square.stack.3d.down.right") {
+                    SwipeView()
+                }
+                Tab("Learn", systemImage: "book") {
+                    LearnView()
+                }
+                Tab("Diary", systemImage: "calendar") {
+                    DiaryView()
+                }
+                Tab("Setting", systemImage: "gear") {
+                    SettingsView()
+                }
             }
         }
     }
 }
-
 #Preview {
     BarView()
 }

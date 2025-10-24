@@ -8,16 +8,35 @@
 import SwiftUI
 
 struct ListDetailView: View {
-    var article : ListModel
-    
+    var article: ListModel
+
     var body: some View {
-        
-        Text(article.title)
-            .font(.title)
-            .bold()
-        
+        ZStack {
+            backgroundGradient
+                .ignoresSafeArea()
+
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    Text(article.title)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 40)
+
+                    Text(article.assetname)
+                        .font(.system(size: 21))
+                        .lineSpacing(8)
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 40)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
+
 #Preview {
-    ListDetailView(article:    ListModel(title: "eat shit", color: .red))
+    ListDetailView(article: ListModel(title: "Mood And Carbs", color: .red, assetname: "Mood And Carbs"))
 }

@@ -11,5 +11,6 @@ struct ListModel: Identifiable{
     var id = UUID()
     var title: String
     var color: Color
+    var assetname : String
     }
 
