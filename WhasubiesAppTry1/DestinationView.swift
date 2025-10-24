@@ -9,9 +9,7 @@ import SwiftUI
 
 struct DestinationView: View {
     var body: some View {
-        Text("Hello, Learners!")
-        Image(systemName: "swift")
-
+        
     }
 }
 

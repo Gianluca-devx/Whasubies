@@ -15,6 +15,7 @@ struct ContentView: View {
     @State private var showAnimation: Bool = false
     
     var body: some View {
+        
         NavigationStack {
             VStack {
                 NavigationLink ("Navigation Button") {
