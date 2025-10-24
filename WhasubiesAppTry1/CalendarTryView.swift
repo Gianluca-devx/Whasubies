@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 //how to put moving image in the Tab bar?
 
 //Instead of VStack + HStack for the sheet used NavigationStack
@@ -16,32 +17,46 @@ struct CalendarTryView: View {
     @State private var date = Date()
     @State private var isSheetPresented = false
     @State private var userInput = "" // text the user types
-    @State private var great = "Hello"
+    @State private var currentDate = Date.now
+    @State private var hour = Date.now
+    
     
     var body: some View {
         
-        NavigationStack {
+        
+        ZStack {
+            backgroundGradient
+                .ignoresSafeArea(edges: .all)
+            
             VStack {
+                
+                Spacer()
+                
+                Text("Hello Mobina")
+                    .font(Font.largeTitle.bold())
+                    .padding(.leading)
+                
+                Text(hour, style: .time)
+                    .font(Font.largeTitle)
+                
+                Spacer(minLength: 60)
+                
                 DatePicker(
                     "Start Date",
                     selection: $date,
                     displayedComponents: [.date])
-                
+                .datePickerStyle(.graphical)
                 .onChange(of: date) { oldDate, newDate in
                     let calendar = Calendar.current
                     let oldDay = calendar.component(.day, from: oldDate)
                     let newDay = calendar.component(.day, from: newDate)
                     guard oldDay != newDay else { return }
                     isSheetPresented = true
-                }
                     
-                NavigationLink("Hello") {
-                    ContentView()
                 }
                 
-                //Button("Insert your text here") {}
-                                                    
                 //StartSheet
+                
                 .sheet(isPresented: $isSheetPresented) {
                     
                     NavigationStack {
@@ -56,13 +71,20 @@ struct CalendarTryView: View {
                             }
                     }
                 }
-            } //EndSheet
-            
-        }
-        .datePickerStyle(.graphical)
+                
+                Spacer()
+                
+                Text("Your streak is: 4🔥")
+                    .font(.system(size: 25))
+                    .padding()
+                    .glassEffect()
+                    .padding(.bottom) // 👈 float above tab bar
+            }
+        }//EndSheet and VStack
     }
-    
 }
+
+
 
 
 #Preview {
