@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+internal import Combine
 
 
 //how to put moving image in the Tab bar?
@@ -17,12 +18,11 @@ struct CalendarTryView: View {
     @State private var date = Date()
     @State private var isSheetPresented = false
     @State private var userInput = "" // text the user types
-    @State private var currentDate = Date.now
-    @State private var hour = Date.now
+    @State private var hour = Date()
+    let timer = Timer.publish(every: 1, on: .main, in: .common) .autoconnect()
     
     
     var body: some View {
-        
         
         ZStack {
             backgroundGradient
@@ -36,8 +36,11 @@ struct CalendarTryView: View {
                     .font(Font.largeTitle.bold())
                     .padding(.leading)
                 
-                Text(hour, style: .time)
-                    .font(Font.largeTitle)
+                Text(hour.formatted(date: .omitted, time: .shortened))
+                    .font(.system(size: 27, weight: .bold))
+                
+                //                Text(hour, style: .time)
+                //                    .font(Font.largeTitle)
                 
                 Spacer(minLength: 60)
                 
@@ -80,9 +83,14 @@ struct CalendarTryView: View {
                     .glassEffect()
                     .padding(.bottom) // 👈 float above tab bar
             }
-        }//EndSheet and VStack
-    }
+        }
+        .onReceive(timer) { time in
+            hour = time }
+    }//EndSheet and VStack
+       
 }
+
+
 
 
 
