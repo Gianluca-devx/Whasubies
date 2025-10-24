@@ -9,29 +9,35 @@ import SwiftUI
 
 struct DiaryView: View {
     
+    var diaryViewModel = DiaryViewModel()
+    
     var body: some View {
         VStack {
             NavigationView {
                 List {
-                    ForEach(diaryEntries) {
-                        Section {
-                            Text(diaryEntries.diaryText)
+                    ForEach(diaryViewModel.diaryEntries)
+                    {
+                        diary in
+                        NavigationLink(destination:DiaryDetailView(diary: diary)) {
+                            
+                            VStack(alignment:.leading) {
+                                Section {
+                                    Text(diary.date)
+                                        .bold()
+                                    
+                                    Text(diary.diaryText)
+                                        .font(.subheadline)
+                                        .padding(.top)
+                                }
+                            }
                         }
-                        Section {
-                            Text("")
-                        }
-                        Section {
-                            Text("")
-                        }
-                        Section {
-                            Text("")
-                        }
-                        Section {
-                            Text("")
-                        }
+                        
                     }
                 }
+                .navigationTitle("Diary")
+                .padding(.bottom)
             }
+            
             
         }
     }
