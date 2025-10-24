@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Diary: Identifiable {
+    var id : UUID = UUID()
+    var date: String
+    var diaryText: String
+}

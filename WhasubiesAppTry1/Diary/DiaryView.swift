@@ -8,10 +8,35 @@
 import SwiftUI
 
 struct DiaryView: View {
+    
     var body: some View {
-        Text("Hello, Diary!")
+        VStack {
+            NavigationView {
+                List {
+                    ForEach(diaryEntries) {
+                        Section {
+                            Text(diaryEntries.diaryText)
+                        }
+                        Section {
+                            Text("")
+                        }
+                        Section {
+                            Text("")
+                        }
+                        Section {
+                            Text("")
+                        }
+                        Section {
+                            Text("")
+                        }
+                    }
+                }
+            }
+            
+        }
     }
 }
+
 
 #Preview {
     DiaryView()

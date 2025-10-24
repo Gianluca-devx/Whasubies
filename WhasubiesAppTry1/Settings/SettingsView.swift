@@ -9,24 +9,24 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State private var celsius: Double = 0
+    @State private var swipes: Double = 2
+    
     
     var body: some View {
-        //        VStack {
-        //            HStack {
-        //                Text("User settings")
-        //                    .font(.title)
-        //                    .bold()
-        //                    .padding()
-        //                Spacer()
-        //                Image(systemName: "bell")
-        //                    .padding()
-        //
-        //            }
         NavigationView {
             List{
-                Section(header: Text("Idk")){
-                    Slider(value: $celsius, in: 0...10)
+                Section(header: Text("Swipes per day")){
+                    Slider(
+                        value: $swipes,
+                        in: 0...10,
+                        step: 2
+                    ) {
+                        Text("Swipe")
+                    } minimumValueLabel: {
+                        Text("0")
+                    } maximumValueLabel: {
+                        Text("10")
+                    }
                     
                 }
                 .font(.subheadline)
@@ -52,11 +52,13 @@ struct SettingsView: View {
                 .font(.subheadline)
                 
                 Section(header: Text("Reminder notification")){
-                    Toggle(isOn: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Is On@*/.constant(true)/*@END_MENU_TOKEN@*/) {
-                        Text("Send at specific time")
-                    }
+                    
+                    DatePicker(selection: .constant(Date()), label: { Text("Send at") })
+                    
                     
                 }
+                .font(.subheadline)
+                
                 
             }
             .navigationTitle("User Settings")
