@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct DiaryView: View {
     
     var diaryViewModel = DiaryViewModel()
@@ -15,15 +16,19 @@ struct DiaryView: View {
         VStack {
             NavigationView {
                 List {
+                    
                     ForEach(diaryViewModel.diaryEntries)
                     {
                         diary in
-                        NavigationLink(destination:DiaryDetailView(diary: diary)) {
-                            
-                            VStack(alignment:.leading) {
-                                Section {
+                        Section {
+                            NavigationLink(destination:DiaryDetailView(diary: diary)) {
+                                
+                                VStack(alignment:.leading) {
+                                    
                                     Text(diary.date)
                                         .bold()
+                                    
+                                    Divider()
                                     
                                     Text(diary.diaryText)
                                         .font(.subheadline)
@@ -35,7 +40,6 @@ struct DiaryView: View {
                     }
                 }
                 .navigationTitle("Diary")
-                .padding(.bottom)
             }
             
             
