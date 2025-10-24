@@ -23,10 +23,10 @@ struct BarView: View {
                 LearnView()
             }
             Tab("Diary", systemImage: "calendar") {
-                ContentView()
+                DiaryView()
             }
                 Tab("Settings", systemImage: "gear") {
-                    ContentView()
+                    SettingsView()
             }
         }
     }

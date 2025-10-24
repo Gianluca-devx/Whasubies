@@ -22,19 +22,22 @@ struct SwipeView: View {
     var body: some View {
         ZStack {
             // 🌈 Background gradient
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color(red: 0.2039, green: 0.6784, blue: 0.4431),
-                    Color(red: 1.0, green: 0.7725, blue: 0.8274)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+//            LinearGradient(
+//                gradient: Gradient(colors: [
+//                    Color(red: 0.2039, green: 0.6784, blue: 0.4431),
+//                    Color(red: 1.0, green: 0.7725, blue: 0.8274)
+//                ]),
+//                startPoint: .topLeading,
+//                endPoint: .bottomTrailing
+//            )
+//            .ignoresSafeArea()
             
             // 🟥🟩 Dynamic overlay (changes as you drag)
             // 🟥🟩 Dynamic overlay (changes as you drag)
             // 🟥🟩 Dynamic overlay (changes as you drag)
+            
+            backgroundGradient
+                .ignoresSafeArea(edges: .all)
             GeometryReader { geo in
                 ZStack {
                     if dragOffset.width < 0 {
